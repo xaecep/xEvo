@@ -1,5 +1,5 @@
 # Name: xThx
-__version__ = (0, 0, 2)
+__version__ = (0, 0, 3)
 # meta developer: @iamtox
 from .. import loader, utils
 import asyncio
@@ -73,8 +73,8 @@ class xThx(loader.Module):
             await message.delete()
           
         if message.chat_id == 5522271758 and "поблагодарил(а) тебя" in message.text.lower():
-            plasma_regex = r"\+(\d+[,]\d+)"
-            sun_regex = r"\+(\d+) ☀"
+            plasma_regex = r"\+(\d{1,3}(?:,\d{3})*)(?:\s*\d*)?\s*🎆"
+            sun_regex = r"\+(\d+)\s*☀"
             match_plasma = re.search(plasma_regex, message.text)
             match_sun = re.search(sun_regex, message.text)          
             if match_plasma:
@@ -92,8 +92,8 @@ class xThx(loader.Module):
     async def xstat(self, message):
         '''- Статистика Thx'''
         message_text = (
-            f"<b>Награда с Thx: 🎆 {self.get('plasma_thx')} | ☀️ {self.get('sun_thx')}\n</b>"
-            f"<b>Награда с Глобальных Бустов: 🎆 {self.get('plasma_from_thx')} | ☀️ {self.get('sun_from_thx')}\n</b>"              
+            f"<b>Награда с Thx: <emoji document_id=5431783411981228752>🎆</emoji> {self.get('plasma_thx')} | ☀️ {self.get('sun_thx')}\n</b>"
+            f"<b>Награда с Глобальных Бустов: <emoji document_id=5431783411981228752>🎆</emoji> {self.get('plasma_from_thx')} | ☀️ {self.get('sun_from_thx')}\n</b>"              
         )  
         await utils.answer(message, message_text)
          
