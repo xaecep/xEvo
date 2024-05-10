@@ -42,7 +42,7 @@ class xThx(loader.Module):
     async def xthx(self, message):
         '''- Авто-Thx'''
         self.config["thx"] = not self.config.get("thx", False)
-        await utils.answer(message, f"<b>Авто-Thx  {'включен ✅' if self.config['thx'] else 'выключен ❌'}</b>")
+        await utils.answer(message, f"<b><emoji document_id=5472189549473963781>🙏</emoji> Авто-Thx  {'включен <emoji document_id=5980930633298350051>✅</emoji>' if self.config['thx'] else 'выключен <emoji document_id=5980953710157632545>❌</emoji>'}</b>")
 
     @loader.watcher(only_messages=True)
     async def watcher(self, message: Message):
