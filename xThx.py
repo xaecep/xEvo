@@ -63,7 +63,7 @@ class xThx(loader.Module):
                 current_plasma_count = self.get("plasma_thx", 0)
                 self.set("plasma_thx", current_plasma_count + int(plasma_amount_str))
         if message.chat_id == 5522271758 and "☀️" in message.text.lower() and "ты поблагодарил(а) игрока" in message.text.lower():
-            sun_text = r"\+(\d{1,3}(,\d{3})*(\.\d+)?)"
+            sun_text = r"\+(\d+)\s*☀"
             match = re.search(sun_text, message.text, re.IGNORECASE)
             if match:
                 sun_amount_str = match.group(1).replace(',', '') 
