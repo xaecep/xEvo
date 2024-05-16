@@ -53,7 +53,7 @@ class xThx(loader.Module):
         ):
             await self.client.send_message("@mine_evo_bot", "Thx")
             if "Глобальный Руда" in message.raw_text:
-                await asyncio.sleep(35400)
+                await asyncio.sleep(3540)
                 await self.client.send_message("@mine_evo_bot", "Бур") 
         if message.chat_id == 5522271758 and "🎆" in message.text.lower() and "ты поблагодарил(а) игрока" in message.text.lower():
             plasma_text = r"\+(\d{1,3}(,\d{3})*(\.\d+)?)"
