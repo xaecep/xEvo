@@ -1,10 +1,12 @@
 # Name: xThx
-__version__ = (0, 0, 3)
+__version__ = (0, 0, 4)
 # meta developer: @iamtox
 from .. import loader, utils
 import asyncio
 from telethon.tl.types import Message
 import re
+logger = logging.getLogger("xThx")
+
 
 @loader.tds
 class xThx(loader.Module):
@@ -48,14 +50,14 @@ class xThx(loader.Module):
         if (
             self.config["thx"]
             and message.chat_id == -1001565066632
-            and message.sender is not None
             and message.sender.id == 5522271758
-            and "Используй команду Thx чтобы поблагодарить и получить бонус!" in message.raw_text
+            and "используй команду thx чтобы поблагодарить и получить бонус!" in message.raw_text.lower()
         ):
             await self.client.send_message("@mine_evo_bot", "Thx")
+            logger.info(f"Thx was sended")
             if "Глобальный Руда" in message.raw_text:
                 await asyncio.sleep(3540)
-                await self.client.send_message("@mine_evo_bot", "Бур") 
+                await self.client.send_message("@mine_evo_bot", "АБ") 
         if message.chat_id == 5522271758 and "🎆" in message.raw_text and "ты поблагодарил(а) игрока" in message.raw_text:
             plasma_text = r"\+(\d{1,3}(,\d{3})*(\.\d+)?)"
             match = re.search(plasma_text, message.text)
