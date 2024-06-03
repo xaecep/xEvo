@@ -5,6 +5,7 @@ from .. import loader, utils
 import asyncio
 from telethon.tl.types import Message
 import re
+import logging
 logger = logging.getLogger("xThx")
 
 
